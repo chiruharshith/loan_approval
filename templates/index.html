@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+    <style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Loan Status</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+        <label for="gender">Choose Gender</label>
+          <select id="gender" name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+          </select>
+<br>
+        <label for="married">Are you married?</label>
+          <select id="married" name="married">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+          </select>
+<br>
+        <label for="dependents">How many dependents?</label>
+          <select id="dependents" name="dependents">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3+">3+</option>
+          </select>
+<br>
+        <label for="education">What is your last education?</label>
+          <select id="education" name="education">
+              <option value="Graduate">Graduate</option>
+              <option value="Not Graduate">Not Graduate</option>
+          </select>
+<br>
+        <label for="self_employeed">Are you self employeed?</label>
+          <select id="self_employeed" name="self_employeed">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+          </select>
+<br>
+        <label for="property_are">What is your property area?</label>
+          <select id="property_are" name="property_are">
+              <option value="Rural">Rural</option>
+              <option value="Semiurban">Semiurban</option>
+              <option value="Urban">Urban</option>
+          </select>
+<br>
+        <input type="text" name="applicant_income" placeholder="What is your income" required="required" />
+<br>        <input type="text" name="loan_amount" placeholder="What is your loan amount?" required="required" />
+<br>        <input type="text" name="loan_amount_term" placeholder="Enter Loan_Amount_Term" required="required" />
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+   <br>
+   <br>
+     <h1>{{ prediction_text }}</h1>
+ </div>
+</body>
+</html>
